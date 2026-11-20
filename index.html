@@ -31,14 +31,13 @@
     .premise-copy p{margin:0;font:400 2cqw/1.5 Arial,sans-serif;letter-spacing:-.015em}
     .premise-copy strong{font-weight:700}
     .premise-photo{position:absolute;left:0;bottom:0;width:100%;height:30%;object-fit:cover;object-position:50% 88%}
-    .market-intro{position:absolute;top:30%;left:8%;margin:0;font:400 2.1cqw/1.4 Arial,sans-serif}
-    .market-list{position:absolute;top:40%;left:8%;right:8%;margin:0;padding-left:1.5em;display:grid;gap:1.2cqw;font:400 1.9cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
-    .market-list li{padding-left:.35em}
-    .market-list li::marker{color:#bc8b0a}
     .comparison-grid{position:absolute;top:39%;left:8%;right:8%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4.5cqw}
     .comparison{border-top:.3cqw solid #f3c741;padding-top:2cqw}
     .comparison h3{margin:0 0 1.8cqw;font:700 2cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .comparison p{margin:0;font:400 1.9cqw/1.55 Arial,sans-serif;letter-spacing:-.01em}
+    .market .comparison-grid{top:34%}
+    .market .comparison h3{min-height:5.2cqw}
+    .market .comparison p.source{margin-top:2cqw;font:400 1.2cqw/1.5 Arial,sans-serif;color:#66576a;letter-spacing:0}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
     .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
@@ -66,15 +65,23 @@
     <img class="premise-photo" src="assets/sunset.jpg" alt="Six men together on a beach at sunset.">
   </section>
   <section class="slide premise market" id="slide-3" aria-labelledby="market-title" hidden>
-    <h2 id="market-title">Market Overview</h2>
-    <p class="market-intro"><strong>KOOX</strong> appeals to audiences interested in:</p>
-    <ul class="market-list">
-      <li>Unscripted comedy, variety shows, and reality competitions.</li>
-      <li>Personality-driven entertainment featuring humour, teamwork, and playful rivalries.</li>
-      <li>Somali and East African culture and representation.</li>
-      <li>Ottawa-based entertainment featuring recognizable locations, communities, and local businesses.</li>
-      <li>Older personalities taking on unexpected adventures, games, and challenges.</li>
-    </ul>
+    <h2 id="market-title">MARKET OVERVIEW</h2>
+    <div class="comparison-grid">
+      <article class="comparison">
+        <h3>Unscripted Entertainment</h3>
+        <p>KOOX enters the variety and reality entertainment market, combining comedy, competition, and adventure.</p>
+      </article>
+      <article class="comparison">
+        <h3>Digital Entertainment</h3>
+        <p><strong>77%</strong> of Canadians used YouTube in the past month, making it an established platform for reaching viewers.</p>
+        <p class="source">Source: Ipsos, 2026</p>
+      </article>
+      <article class="comparison">
+        <h3>Local Opportunity</h3>
+        <p>Ottawa is home to approximately <strong>10,500</strong> people reporting Somali ancestry, providing a potential community audience for KOOX.</p>
+        <p class="source">Source: Statistics Canada, 2021 Census</p>
+      </article>
+    </div>
   </section>
   <section class="slide premise competitive" id="slide-4" aria-labelledby="competitive-title" hidden>
     <h2 id="competitive-title">COMPETITIVE ANALYSIS</h2>
