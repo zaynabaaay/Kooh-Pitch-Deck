@@ -31,6 +31,10 @@
     .premise-copy p{margin:0;font:400 2cqw/1.5 Arial,sans-serif;letter-spacing:-.015em}
     .premise-copy strong{font-weight:700}
     .premise-photo{position:absolute;left:0;bottom:0;width:100%;height:30%;object-fit:cover;object-position:50% 88%}
+    .market-intro{position:absolute;top:30%;left:8%;margin:0;font:400 2.1cqw/1.4 Arial,sans-serif}
+    .market-list{position:absolute;top:40%;left:8%;right:8%;margin:0;padding-left:1.5em;display:grid;gap:1.2cqw;font:400 1.9cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
+    .market-list li{padding-left:.35em}
+    .market-list li::marker{color:#bc8b0a}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
     .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
@@ -57,9 +61,20 @@
     </div>
     <img class="premise-photo" src="assets/sunset.jpg" alt="Six men together on a beach at sunset.">
   </section>
+  <section class="slide premise market" id="slide-3" aria-labelledby="market-title" hidden>
+    <h2 id="market-title">Market Overview</h2>
+    <p class="market-intro"><strong>KOOX</strong> appeals to audiences interested in:</p>
+    <ul class="market-list">
+      <li>Unscripted comedy, variety shows, and reality competitions.</li>
+      <li>Personality-driven entertainment featuring humour, teamwork, and playful rivalries.</li>
+      <li>Somali and East African culture and representation.</li>
+      <li>Ottawa-based entertainment featuring recognizable locations, communities, and local businesses.</li>
+      <li>Older personalities taking on unexpected adventures, games, and challenges.</li>
+    </ul>
+  </section>
   <nav class="deck-nav" aria-label="Slide navigation">
     <button type="button" id="previous" aria-label="Previous slide">Previous</button>
-    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 2</span>
+    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 3</span>
     <button type="button" id="next" aria-label="Next slide">Next</button>
   </nav>
   <script>
@@ -74,7 +89,7 @@
       previous.disabled = current === 0;
       next.disabled = current === slides.length - 1;
       document.getElementById('slide-count').textContent = (current + 1) + ' / ' + slides.length;
-      document.title = current === 0 ? 'Kooh — A New Unscripted Series' : 'The Premise — Kooh';
+      document.title = current === 0 ? 'Kooh — A New Unscripted Series' : slides[current].querySelector('h2').textContent + ' — Kooh';
     }
     function moveSlide(direction) {
       location.hash = 'slide-' + (Math.max(0, Math.min(slides.length - 1, current + direction)) + 1);
