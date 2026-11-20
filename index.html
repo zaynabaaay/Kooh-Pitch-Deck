@@ -22,17 +22,88 @@
     .tagline{position:absolute;top:25%;right:7.2%;margin:0;text-align:center;font:500 2.7cqw/1.25 Caveat,cursive;transform:rotate(-5deg);text-shadow:0 .08cqw .5cqw rgba(54,29,43,.2)}
     .tagline span{display:block}
     .tagline::after{content:"";display:block;width:66%;height:.22cqw;background:currentColor;border-radius:100%;margin:.7cqw 0 0 auto;transform:rotate(-4deg)}
+    [hidden]{display:none!important}
+    .premise{background:#fff8ed;color:#352538}
+    .premise::before{display:none}
+    .premise h2{position:absolute;top:10%;left:8%;margin:0;font:400 5.2cqw/1.2 Knewave,cursive;letter-spacing:-.025em}
+    .premise h2::after{content:"";display:block;width:35%;height:.5cqw;background:#f3c741;margin-top:1.8cqw;transform:rotate(-2deg);border-radius:50%}
+    .premise-copy{position:absolute;left:8%;right:8%;top:33%;display:grid;grid-template-columns:1.35fr 1fr;gap:7%;align-items:start}
+    .premise-copy p{margin:0;font:400 2cqw/1.5 Arial,sans-serif;letter-spacing:-.015em}
+    .premise-copy strong{font-weight:700}
+    .premise-photo{position:absolute;left:0;bottom:0;width:100%;height:30%;object-fit:cover;object-position:50% 88%}
+    .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
+    .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
+    .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
+    .deck-nav button:disabled{opacity:.35;cursor:default}
+    .deck-nav:has(button:hover){background:#17131a}
+    @media (max-width:600px){.deck-nav{bottom:8px;right:8px;gap:6px;font-size:12px;padding:2px 4px}}
     @page{size:13.333333in 7.5in;margin:0}
-    @media print{html,body{background:#fff;min-height:0;display:block}.slide{width:100vw;height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+    @media print{html,body{background:#fff;min-height:0;display:block}.slide,.slide[hidden]{display:block!important;width:100vw;height:100vh;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-of-type{break-after:auto}.deck-nav{display:none}}
   </style>
 </head>
 <body>
-  <main class="slide" aria-label="Kooh pitch deck title slide">
+  <section class="slide" id="slide-1" aria-label="Kooh pitch deck title slide">
     <img class="background" src="assets/sunset.jpg" alt="Six men standing together on the beach, facing a golden sunset over the ocean.">
     <p class="eyebrow">A new unscripted series</p>
     <h1>Kooh</h1>
     <svg class="underline" viewBox="0 0 460 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 Q190 -2 451 8 Q260 4 18 23Z" fill="currentColor"/></svg>
     <p class="tagline"><span>Six Somali men.</span><span>New challenges.</span><span>Big laughs.</span><span>Real friendship.</span></p>
-  </main>
+  </section>
+  <section class="slide premise" id="slide-2" aria-labelledby="premise-title" hidden>
+    <h2 id="premise-title">The Premise</h2>
+    <div class="premise-copy">
+      <p><strong>KOOX</strong> is an unscripted variety and adventure series bringing together six older Somali men in Ottawa for games, competitions, and new experiences.</p>
+      <p>Each adventure brings out their personalities through playful rivalries, teamwork, and unexpected situations, as friendships develop along the way.</p>
+    </div>
+    <img class="premise-photo" src="assets/sunset.jpg" alt="Six men together on a beach at sunset.">
+  </section>
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <button type="button" id="previous" aria-label="Previous slide">Previous</button>
+    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 2</span>
+    <button type="button" id="next" aria-label="Next slide">Next</button>
+  </nav>
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const previous = document.getElementById('previous');
+    const next = document.getElementById('next');
+    let current = 0;
+    function showSlide() {
+      const requested = Number(location.hash.replace('#slide-', '')) || 1;
+      current = Math.max(0, Math.min(slides.length - 1, requested - 1));
+      slides.forEach((slide, index) => { slide.hidden = index !== current; });
+      previous.disabled = current === 0;
+      next.disabled = current === slides.length - 1;
+      document.getElementById('slide-count').textContent = (current + 1) + ' / ' + slides.length;
+      document.title = current === 0 ? 'Kooh — A New Unscripted Series' : 'The Premise — Kooh';
+    }
+    function moveSlide(direction) {
+      location.hash = 'slide-' + (Math.max(0, Math.min(slides.length - 1, current + direction)) + 1);
+    }
+    previous.addEventListener('click', () => moveSlide(-1));
+    next.addEventListener('click', () => moveSlide(1));
+    window.addEventListener('hashchange', showSlide);
+    document.addEventListener('keydown', event => {
+      if (event.target.closest('button,a,input,textarea,select') || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); moveSlide(1); }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); moveSlide(-1); }
+    });
+    let touchStart = null;
+    document.addEventListener('touchstart', event => {
+      if (event.touches.length === 1 && !event.target.closest('nav')) {
+        const touch = event.touches[0];
+        touchStart = { x: touch.clientX, y: touch.clientY };
+      } else { touchStart = null; }
+    }, { passive: true });
+    document.addEventListener('touchend', event => {
+      if (!touchStart) return;
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchStart.x;
+      const dy = touch.clientY - touchStart.y;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) moveSlide(dx < 0 ? 1 : -1);
+      touchStart = null;
+    }, { passive: true });
+    document.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
+    showSlide();
+  </script>
 </body>
 </html>
