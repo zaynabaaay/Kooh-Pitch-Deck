@@ -3,9 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Kooh</title>
-  <style>html,body{margin:0;min-height:100%;background:#fff}body{min-height:100vh;min-height:100dvh}</style>
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Kooh — a new unscripted series. Six Somali men. New challenges. Big laughs. Real friendship.">
+  <title>Kooh — A New Unscripted Series</title>
+  <link rel="preload" href="assets/Knewave-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face{font-family:Knewave;src:url('assets/Knewave-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:Caveat;src:url('assets/Caveat-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:#17131a}
+    body{min-height:100vh;min-height:100dvh;display:grid;place-items:center}
+    .slide{position:relative;width:min(100vw,177.7778vh);width:min(100vw,177.7778dvh);aspect-ratio:16/9;overflow:hidden;container-type:inline-size;isolation:isolate;background:#aa7e87;color:#fff6e4}
+    .background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .slide::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(37,25,55,.28),rgba(56,30,48,.12) 49%,transparent 73%)}
+    .eyebrow{position:absolute;top:13%;left:9%;margin:0;font:400 1.16cqw/1.4 Arial,sans-serif;letter-spacing:.48em;text-transform:uppercase}
+    h1{position:absolute;left:8%;top:22%;margin:0;color:#ffe264;font:400 18cqw/1.1 Knewave,cursive;letter-spacing:-.045em;text-shadow:0 .08cqw .6cqw rgba(62,37,42,.1)}
+    .underline{position:absolute;left:11%;top:58%;width:36%;height:3%;color:#ffe264;transform:rotate(-3deg)}
+    .tagline{position:absolute;top:25%;right:7.2%;margin:0;text-align:center;font:500 2.7cqw/1.25 Caveat,cursive;transform:rotate(-5deg);text-shadow:0 .08cqw .5cqw rgba(54,29,43,.2)}
+    .tagline span{display:block}
+    .tagline::after{content:"";display:block;width:66%;height:.22cqw;background:currentColor;border-radius:100%;margin:.7cqw 0 0 auto;transform:rotate(-4deg)}
+    @page{size:13.333333in 7.5in;margin:0}
+    @media print{html,body{background:#fff;min-height:0;display:block}.slide{width:100vw;height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style>
 </head>
-<body></body>
+<body>
+  <main class="slide" aria-label="Kooh pitch deck title slide">
+    <img class="background" src="assets/sunset.jpg" alt="Six men standing together on the beach, facing a golden sunset over the ocean.">
+    <p class="eyebrow">A new unscripted series</p>
+    <h1>Kooh</h1>
+    <svg class="underline" viewBox="0 0 460 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 Q190 -2 451 8 Q260 4 18 23Z" fill="currentColor"/></svg>
+    <p class="tagline"><span>Six Somali men.</span><span>New challenges.</span><span>Big laughs.</span><span>Real friendship.</span></p>
+  </main>
+</body>
 </html>
