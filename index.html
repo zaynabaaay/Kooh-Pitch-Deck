@@ -35,6 +35,10 @@
     .market-list{position:absolute;top:40%;left:8%;right:8%;margin:0;padding-left:1.5em;display:grid;gap:1.2cqw;font:400 1.9cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
     .market-list li{padding-left:.35em}
     .market-list li::marker{color:#bc8b0a}
+    .comparison-grid{position:absolute;top:39%;left:8%;right:8%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4.5cqw}
+    .comparison{border-top:.3cqw solid #f3c741;padding-top:2cqw}
+    .comparison h3{margin:0 0 1.8cqw;font:700 2cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
+    .comparison p{margin:0;font:400 1.9cqw/1.55 Arial,sans-serif;letter-spacing:-.01em}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
     .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
@@ -72,9 +76,26 @@
       <li>Older personalities taking on unexpected adventures, games, and challenges.</li>
     </ul>
   </section>
+  <section class="slide premise competitive" id="slide-4" aria-labelledby="competitive-title" hidden>
+    <h2 id="competitive-title">COMPETITIVE ANALYSIS</h2>
+    <div class="comparison-grid">
+      <article class="comparison">
+        <h3>THE AMAZING RACE</h3>
+        <p>Location-based challenges, teamwork, competition, and unpredictable outcomes.</p>
+      </article>
+      <article class="comparison">
+        <h3>TASKMASTER</h3>
+        <p>Creative challenges, improvisational humour, and personality-driven comedy.</p>
+      </article>
+      <article class="comparison">
+        <h3>2 DAYS &amp; 1 NIGHT</h3>
+        <p>Group adventures, playful rivalries, ensemble chemistry, and developing friendships.</p>
+      </article>
+    </div>
+  </section>
   <nav class="deck-nav" aria-label="Slide navigation">
     <button type="button" id="previous" aria-label="Previous slide">Previous</button>
-    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 3</span>
+    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 4</span>
     <button type="button" id="next" aria-label="Next slide">Next</button>
   </nav>
   <script>
