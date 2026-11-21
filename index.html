@@ -61,6 +61,12 @@
     .tone-list{position:absolute;top:31%;left:8%;right:8%;margin:0;padding-left:1.25em;display:grid;gap:1.4cqw;font:400 1.7cqw/1.5 Arial,sans-serif;letter-spacing:-.01em}
     .tone-list li{padding-left:.35em}
     .tone-list li::marker{color:#bc8b0a}
+    .series-content{position:absolute;top:31%;left:8%;right:8%;font:400 1.85cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
+    .series-content p{margin:0}
+    .series-metadata{display:flex;flex-direction:column;gap:.6cqw}
+    .format-description{margin-top:2cqw;border-left:.3cqw solid #f3c741;padding-left:1.8cqw}
+    .format-description h3{margin:0 0 .65cqw;font:700 1.95cqw/1.3 Arial,sans-serif}
+    .format-description p + p{margin-top:1.2cqw}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
     .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
@@ -97,7 +103,22 @@
       <li>Inspired by Korean variety-show editing, with expressive on-screen captions, comedic sound effects, reaction shots, replays, and upbeat music that amplify the humour and excitement.</li>
     </ul>
   </section>
-  <section class="slide premise market" id="slide-4" aria-labelledby="market-title" hidden>
+  <section class="slide premise series-format" id="slide-4" aria-labelledby="series-format-title" hidden>
+    <h2 id="series-format-title">SERIES FORMAT</h2>
+    <div class="series-content">
+      <div class="series-metadata">
+        <p><strong>Genre:</strong> Unscripted Variety / Comedy / Adventure</p>
+        <p><strong>Season:</strong> 6 Episodes</p>
+        <p><strong>Runtime:</strong> 40–45 Minutes per Episode</p>
+      </div>
+      <section class="format-description" aria-labelledby="format-description-title">
+        <h3 id="format-description-title">Format</h3>
+        <p>Each adventure unfolds across two episodes, combining a series of games, competitions, and activities connected by a central theme.</p>
+        <p>The challenges create opportunities for spontaneous humour, friendly rivalries, teamwork, and unexpected moments as the cast navigates each experience.</p>
+      </section>
+    </div>
+  </section>
+  <section class="slide premise market" id="slide-5" aria-labelledby="market-title" hidden>
     <h2 id="market-title">MARKET OVERVIEW</h2>
     <ul class="stacked-list">
       <li>
@@ -114,7 +135,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise competitive" id="slide-5" aria-labelledby="competitive-title" hidden>
+  <section class="slide premise competitive" id="slide-6" aria-labelledby="competitive-title" hidden>
     <h2 id="competitive-title">COMPETITIVE ANALYSIS</h2>
     <ul class="stacked-list">
       <li>
@@ -131,7 +152,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise funding why" id="slide-6" aria-labelledby="why-title why-subtitle" hidden>
+  <section class="slide premise funding why" id="slide-7" aria-labelledby="why-title why-subtitle" hidden>
     <h2 id="why-title">COMPETITIVE ANALYSIS</h2>
     <p class="funding-subtitle" id="why-subtitle">WHY KOOX?</p>
     <ul class="stacked-list">
@@ -149,7 +170,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise audience" id="slide-7" aria-labelledby="audience-title" hidden>
+  <section class="slide premise audience" id="slide-8" aria-labelledby="audience-title" hidden>
     <h2 id="audience-title">TARGET AUDIENCE</h2>
     <ul class="stacked-list">
       <li>
@@ -166,7 +187,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise marketing" id="slide-8" aria-labelledby="marketing-title" hidden>
+  <section class="slide premise marketing" id="slide-9" aria-labelledby="marketing-title" hidden>
     <h2 id="marketing-title">DISCOVERABILITY &amp; MARKETING</h2>
     <div class="marketing-sections">
       <article class="marketing-section">
@@ -183,7 +204,7 @@
       </article>
     </div>
   </section>
-  <section class="slide premise partners" id="slide-9" aria-labelledby="partners-title" hidden>
+  <section class="slide premise partners" id="slide-10" aria-labelledby="partners-title" hidden>
     <h2 id="partners-title">TARGET CHANNEL &amp; PARTNERS</h2>
     <ul class="stacked-list">
       <li>
@@ -205,7 +226,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise funding" id="slide-10" aria-labelledby="funding-title" hidden>
+  <section class="slide premise funding" id="slide-11" aria-labelledby="funding-title" hidden>
     <h2 id="funding-title">REVENUE MODEL</h2>
     <p class="funding-subtitle">FUNDING STRATEGY</p>
     <div class="funding-groups">
@@ -235,7 +256,7 @@
       </section>
     </div>
   </section>
-  <section class="slide premise funding profit" id="slide-11" aria-labelledby="profit-title profit-subtitle" hidden>
+  <section class="slide premise funding profit" id="slide-12" aria-labelledby="profit-title profit-subtitle" hidden>
     <h2 id="profit-title">REVENUE MODEL</h2>
     <p class="funding-subtitle" id="profit-subtitle">PROFIT STRATEGY</p>
     <ul class="stacked-list">
@@ -259,7 +280,7 @@
   </section>
   <nav class="deck-nav" aria-label="Slide navigation">
     <button type="button" id="previous" aria-label="Previous slide">Previous</button>
-    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 11</span>
+    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 12</span>
     <button type="button" id="next" aria-label="Next slide">Next</button>
   </nav>
   <script>
