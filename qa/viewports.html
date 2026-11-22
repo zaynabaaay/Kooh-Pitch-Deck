@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>KOOX temporary presentation verification</title>
+<style>
+html,body{margin:0;background:#17131a;color:#fff;font:13px Arial,sans-serif}header{padding:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+select,button{font:inherit;padding:6px}#viewport{margin:auto;position:relative}iframe{border:0;position:absolute;top:0;left:0;transform-origin:top left}
+#report{white-space:pre-wrap;max-height:140px;overflow:auto;margin:8px;font:11px monospace}
+</style></head>
+<body><header>
+<label>Viewport <select id="size"><option value="1024,768">iPad landscape 1024×768</option><option value="768,1024">iPad portrait 768×1024</option><option value="1366,1024">iPad Pro landscape</option><option value="1600,900">Desktop 1600×900</option></select></label>
+<label>Media <select id="media"><option value="recordings">Test recordings</option><option value="empty">No recordings</option></select></label>
+<label>Slide <select id="slide"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option></select></label>
+<button id="present">Present</button><button id="exit">Exit</button><button id="play">Play recording</button>
+<button id="left">Swipe left</button><button id="down">Swipe down</button><button id="audit">Audit 16 slides</button>
+</header><main id="viewport"><iframe id="deck" title="KOOX presentation test viewport" src="deck.html#slide-1"></iframe></main><pre id="report" role="status"></pre>
+<script type="module">
+const frame=document.getElementById('deck'), report=document.getElementById('report');
+const select=document.getElementById('slide');
+const api=()=>frame.contentWindow.qaPresentation;
+const tick=()=>new Promise(resolve=>frame.contentWindow.requestAnimationFrame(()=>frame.contentWindow.requestAnimationFrame(resolve)));
+function resize(){
+ const [w,h]=document.getElementById('size').value.split(',').map(Number);
+ const scale=Math.min((innerWidth-16)/w,(innerHeight-110)/h,1);
+ frame.style.width=w+'px';frame.style.height=h+'px';frame.style.transform='scale('+scale+')';
+ document.getElementById('viewport').style.width=w*scale+'px';document.getElementById('viewport').style.height=h*scale+'px';
+}
+document.getElementById('size').addEventListener('change',resize);window.addEventListener('resize',resize);resize();
+document.getElementById('media').addEventListener('change',event=>{
+ frame.src=event.target.value==='recordings'?'deck.html#slide-'+select.value:'../index.html?qa-empty=1#slide-'+select.value;
+ report.textContent='';
+});
+select.addEventListener('change',()=>{frame.contentWindow.location.hash='slide-'+select.value;});
+document.getElementById('present').onclick=()=>frame.contentDocument.getElementById('fullscreen').click();
+document.getElementById('exit').onclick=()=>{const doc=frame.contentDocument;doc.dispatchEvent(new frame.contentWindow.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));};
+document.getElementById('play').onclick=()=>frame.contentDocument.querySelector('.presenter-play')?.click();
+function swipe(dx,dy){
+ const win=frame.contentWindow,doc=frame.contentDocument,target=doc.querySelector('.slide:not([hidden])'),r=target.getBoundingClientRect();
+ const x=r.left+r.width*.5,y=r.top+r.height*.5;
+ const start=new win.Touch({identifier:1,target,clientX:x,clientY:y});
+ const end=new win.Touch({identifier:1,target,clientX:x+dx,clientY:y+dy});
+ target.dispatchEvent(new win.TouchEvent('touchstart',{bubbles:true,cancelable:true,touches:[start],changedTouches:[start]}));
+ target.dispatchEvent(new win.TouchEvent('touchend',{bubbles:true,cancelable:true,touches:[],changedTouches:[end]}));
+}
+document.getElementById('left').onclick=()=>swipe(-150,0);document.getElementById('down').onclick=()=>swipe(0,150);
+function rects(slide){
+ return [...slide.querySelectorAll('h1,h2,h3,p,li')].flatMap(el=>{const range=frame.contentDocument.createRange();range.selectNodeContents(el);return [...range.getClientRects()].filter(r=>r.width&&r.height);});
+}
+document.getElementById('audit').onclick=async()=>{
+ const doc=frame.contentDocument;
+ if(api())await api().presenter.prepare();
+ await doc.fonts.ready;
+ const results=[];
+ for(let n=1;n<=16;n++){
+  frame.contentWindow.location.hash='slide-'+n;
+  await new Promise(resolve=>setTimeout(resolve,100));await tick();
+  const slide=doc.getElementById('slide-'+n),s=slide.getBoundingClientRect(),host=slide.querySelector('.presenter'),circle=host.getBoundingClientRect();
+  const shown=frame.contentWindow.getComputedStyle(host).visibility!=='hidden';
+  const overlaps=shown?rects(slide).filter(r=>r.right>circle.left-2&&r.left<circle.right+2&&r.bottom>circle.top-2&&r.top<circle.bottom+2):[];
+  const outside=rects(slide).filter(r=>r.left<s.left-1||r.right>s.right+1||r.top<s.top-1||r.bottom>s.bottom+1);
+  const video=host.querySelector('video');
+  results.push({
+   slide:n,overlaps:overlaps.length,outside:outside.length,slotShown:shown,
+   circleInside:circle.left>=s.left&&circle.right<=s.right&&circle.top>=s.top&&circle.bottom<=s.bottom,
+   onePlayer:doc.querySelectorAll('video').length===1,
+   src:video.getAttribute('src'),muted:video.muted,volume:video.volume,
+   navHidden:frame.contentWindow.getComputedStyle(doc.querySelector('.deck-nav')).display==='none',
+   reserved:slide.dataset.presenterLayout||'original',state:host.dataset.state,
+   fontSize:frame.contentWindow.getComputedStyle(slide.querySelector('p,li')||slide.querySelector('h1,h2')).fontSize
+  });
+ }
+ select.value='16';
+ report.textContent=JSON.stringify({viewport:[doc.documentElement.clientWidth,doc.documentElement.clientHeight],horizontalScroll:doc.documentElement.scrollWidth>doc.documentElement.clientWidth,results},null,2);
+};
+</script></body></html>
