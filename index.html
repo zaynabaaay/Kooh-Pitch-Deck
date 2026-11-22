@@ -15,16 +15,14 @@
     body{min-height:100vh;min-height:100dvh;display:grid;place-items:center}
     .slide{position:relative;width:min(100vw,177.7778vh);width:min(100vw,177.7778dvh);aspect-ratio:16/9;overflow:hidden;container-type:inline-size;isolation:isolate;background:#aa7e87;color:#fff6e4}
     .background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--photo-position,50% 50%);z-index:-2}
-    .slide::before{content:"";position:absolute;inset:0;z-index:-1;background:none}
     .eyebrow{position:absolute;top:13%;left:9%;margin:0;font:400 1.16cqw/1.4 Arial,sans-serif;letter-spacing:.48em;text-transform:uppercase}
     h1{position:absolute;left:8%;top:22%;margin:0;color:#ffe264;font:400 18cqw/1.1 Knewave,cursive;letter-spacing:-.045em;text-shadow:0 .08cqw .6cqw rgba(62,37,42,.1)}
     .underline{position:absolute;left:11%;top:58%;width:36%;height:3%;color:#ffe264;transform:rotate(-3deg)}
-    .tagline{position:absolute;top:25%;right:7.2%;margin:0;text-align:center;font:500 2.7cqw/1.25 Caveat,cursive;transform:rotate(-5deg);text-shadow:0 .08cqw .5cqw rgba(54,29,43,.2)}
+    .tagline{position:absolute;top:25%;right:7.2%;margin:0;text-align:center;font:500 2.7cqw/1.25 Caveat,cursive;transform:rotate(-5deg)}
     .tagline span{display:block}
     .tagline::after{content:"";display:block;width:66%;height:.22cqw;background:currentColor;border-radius:100%;margin:.7cqw 0 0 auto;transform:rotate(-4deg)}
     [hidden]{display:none!important}
     .premise{background:#fff8ed;color:#352538}
-    .premise::before{display:none}
     .premise h2{position:absolute;top:10%;left:8%;margin:0;font:400 var(--heading-size,5.2cqw)/1.2 Knewave,cursive;letter-spacing:-.025em}
     .premise h2::after{content:"";display:block;width:35%;height:.5cqw;background:#f3c741;margin-top:1.8cqw;transform:rotate(-2deg);border-radius:50%}
     .premise-copy{position:absolute;left:8%;right:8%;top:33%;display:flex;flex-direction:column;gap:1.7cqw}
@@ -64,15 +62,8 @@
     .episode-copy h3{margin:0 0 2.7cqw;font:700 var(--adventure-heading-size,2.5cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .episode-copy p{margin:0}
     .episode-copy p + p{margin-top:2cqw}
-    /* One broad feathered scrim shapes light behind copy; presets follow its height. */
-    .photo-slide{--photo-focus:45%;--photo-radius:40%;--photo-strength:.58;--photo-scrim:radial-gradient(ellipse 110% var(--photo-radius) at 50% var(--photo-focus),rgba(0,0,0,var(--photo-strength)) 0%,rgba(0,0,0,calc(var(--photo-strength)*.96)) 25%,rgba(0,0,0,calc(var(--photo-strength)*.84)) 48%,rgba(0,0,0,calc(var(--photo-strength)*.58)) 68%,rgba(0,0,0,calc(var(--photo-strength)*.25)) 84%,rgba(0,0,0,calc(var(--photo-strength)*.06)) 94%,transparent 100%)}
-    .photo-slide::before{background:var(--photo-scrim)}
-    .photo-slide--long-copy{--photo-focus:60%;--photo-radius:57%;--photo-strength:.62}
-    .photo-slide--bright{--photo-focus:53%;--photo-radius:70%;--photo-strength:.64}
-    .photo-slide--high-key{--photo-focus:46%;--photo-radius:80%;--photo-strength:.64}
-    .photo-slide--cover{--photo-scrim:linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.16) 40%,transparent 73%)}
+    .photo-slide{text-shadow:0 1px 4px rgba(0,0,0,.75)}
     .premise-background{--section-heading-size:min(4.7cqw,56px);--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
-    .premise-background::before{display:block}
     .premise-background h2,.premise-background .funding-subtitle{left:var(--copy-inset)}
     .premise-background .premise-copy,.premise-background .stacked-list,.premise-background .series-content,.premise-background .episode-copy,.premise-background .marketing-sections{left:var(--copy-inset);right:var(--copy-inset)}
     .premise-background h2::after{background:#fff}
@@ -87,7 +78,7 @@
   </style>
 </head>
 <body>
-  <section class="slide photo-slide photo-slide--cover" id="slide-1" aria-label="Kooh pitch deck title slide">
+  <section class="slide photo-slide" id="slide-1" aria-label="Kooh pitch deck title slide">
     <img class="background" src="assets/sunset.jpg" alt="Six men standing together on the beach, facing a golden sunset over the ocean.">
     <p class="eyebrow">A new unscripted series</p>
     <h1>Kooh</h1>
@@ -102,7 +93,7 @@
       <p>Each adventure brings out their personalities through playful rivalries, teamwork, and unexpected situations, as friendships develop along the way.</p>
     </div>
   </section>
-  <section class="slide premise tone photo-slide photo-slide--long-copy premise-background" id="slide-3" aria-labelledby="tone-title" hidden>
+  <section class="slide premise tone photo-slide premise-background" id="slide-3" aria-labelledby="tone-title" hidden>
     <img class="background" src="assets/cast-challenge.jpg" alt="The six cast members laughing together during an outdoor challenge around a table with cones and tennis balls.">
     <h2 id="tone-title">THE TONE</h2>
     <ul class="stacked-list">
@@ -120,7 +111,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise series-format photo-slide photo-slide--long-copy premise-background" id="slide-4" aria-labelledby="series-format-title" hidden>
+  <section class="slide premise series-format photo-slide premise-background" id="slide-4" aria-labelledby="series-format-title" hidden>
     <img class="background" src="assets/production-kit.jpg" alt="Cameras, lenses, microphones, a clapperboard, and production equipment arranged on a sunlit wooden table.">
     <h2 id="series-format-title">SERIES FORMAT</h2>
     <div class="series-content">
@@ -136,7 +127,7 @@
       </section>
     </div>
   </section>
-  <section class="slide premise episode-concept photo-slide photo-slide--bright premise-background" id="slide-5" aria-labelledby="episode-one-title episode-one-subtitle" hidden>
+  <section class="slide premise episode-concept photo-slide premise-background" id="slide-5" aria-labelledby="episode-one-title episode-one-subtitle" hidden>
     <img class="background" src="assets/fashion-show.jpg" alt="A model walking through a lively community fashion show as guests watch.">
     <h2 id="episode-one-title">Adventure 1</h2>
     <div class="episode-copy">
@@ -145,7 +136,7 @@
       <p>Their creations are revealed in a fashion show, where family and friends judge the final looks and determine the winner.</p>
     </div>
   </section>
-  <section class="slide premise episode-concept photo-slide photo-slide--long-copy premise-background" id="slide-6" aria-labelledby="episode-two-title episode-two-subtitle" hidden>
+  <section class="slide premise episode-concept photo-slide premise-background" id="slide-6" aria-labelledby="episode-two-title episode-two-subtitle" hidden>
     <img class="background" src="assets/restaurant-cast.jpg?v=0017a48" alt="Three cast members smiling and working together behind a café counter.">
     <h2 id="episode-two-title">Adventure 2</h2>
     <div class="episode-copy">
@@ -165,7 +156,7 @@
       <p>From coming up with ideas to directing the shoot, the men take control of the creative process before presenting their finished commercial.</p>
     </div>
   </section>
-  <section class="slide premise market photo-slide photo-slide--long-copy premise-background" id="slide-8" aria-labelledby="market-title" hidden>
+  <section class="slide premise market photo-slide premise-background" id="slide-8" aria-labelledby="market-title" hidden>
     <img class="background" src="assets/neighbourhood-court.jpg?v=e2073f7" alt="An outdoor neighbourhood basketball court in warm evening sunlight.">
     <h2 id="market-title">MARKET OVERVIEW</h2>
     <ul class="stacked-list">
@@ -183,7 +174,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise competitive photo-slide photo-slide--bright premise-background" id="slide-9" aria-labelledby="competitive-title" hidden style="--photo-position:50% 78%">
+  <section class="slide premise competitive photo-slide premise-background" id="slide-9" aria-labelledby="competitive-title" hidden style="--photo-position:50% 78%">
     <img class="background" src="assets/two-days-one-night.jpg?v=b268ffa" alt="The 2 Days and 1 Night cast laughing together in front of a mountain landscape.">
     <h2 id="competitive-title">COMPETITIVE ANALYSIS</h2>
     <ul class="stacked-list">
@@ -201,7 +192,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise funding why photo-slide photo-slide--long-copy premise-background" id="slide-10" aria-labelledby="why-title why-subtitle" hidden>
+  <section class="slide premise funding why photo-slide premise-background" id="slide-10" aria-labelledby="why-title why-subtitle" hidden>
     <img class="background" src="assets/family-gathering.jpg?v=534eba6" alt="Family and friends laughing and sharing stories around a dinner table.">
     <h2 id="why-title">COMPETITIVE ANALYSIS</h2>
     <p class="funding-subtitle" id="why-subtitle">WHY KOOX?</p>
@@ -220,7 +211,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise audience photo-slide photo-slide--long-copy premise-background" id="slide-11" aria-labelledby="audience-title" hidden>
+  <section class="slide premise audience photo-slide premise-background" id="slide-11" aria-labelledby="audience-title" hidden>
     <img class="background" src="assets/bus-stop-cast.jpg?v=8561cbf" alt="Three older Somali men laughing together at a bus shelter in warm afternoon light.">
     <h2 id="audience-title">TARGET AUDIENCE</h2>
     <ul class="stacked-list">
@@ -238,7 +229,7 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise marketing photo-slide photo-slide--long-copy premise-background" id="slide-12" aria-labelledby="marketing-title" hidden>
+  <section class="slide premise marketing photo-slide premise-background" id="slide-12" aria-labelledby="marketing-title" hidden>
     <img class="background" src="assets/cast-portrait.jpg?v=58a1aa9" alt="A smiling older Somali man seated indoors beside a sunlit window.">
     <h2 id="marketing-title">DISCOVERABILITY &amp; MARKETING</h2>
     <div class="marketing-sections">
@@ -256,7 +247,7 @@
       </article>
     </div>
   </section>
-  <section class="slide premise partners photo-slide photo-slide--high-key premise-background" id="slide-13" aria-labelledby="partners-title" hidden style="--photo-position:50% 10%">
+  <section class="slide premise partners photo-slide premise-background" id="slide-13" aria-labelledby="partners-title" hidden style="--photo-position:50% 10%">
     <img class="background" src="assets/beta-squad.jpg?v=e1308c5" alt="The five Beta Squad members laughing together in dark hoodies.">
     <h2 id="partners-title">TARGET CHANNEL &amp; PARTNERS</h2>
     <ul class="stacked-list">
