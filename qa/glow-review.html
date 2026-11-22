@@ -4,7 +4,7 @@ html,body{margin:0;background:#17131a;color:white;font:13px Arial}header{padding
 <label>Viewport <select id="size"><option value="1024,768">iPad landscape 1024×768</option><option value="1366,1024">iPad Pro 1366×1024</option><option value="768,1024">iPad portrait 768×1024</option></select></label>
 <label>Slide <select id="slide"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option></select></label>
 <button id="present">Present</button><button id="exit">Exit</button><button id="audit">Audit 16 slides</button>
-</header><main id="viewport"><iframe id="deck" title="Candidate" src="glow-deck.html?v=feather-2"></iframe></main><iframe id="baseline" title="Original layout" src="glow-baseline.html"></iframe><pre id="report"></pre>
+</header><main id="viewport"><iframe id="deck" title="Candidate" src="glow-deck.html?v=feather-3"></iframe></main><iframe id="baseline" title="Original layout" src="glow-baseline.html"></iframe><pre id="report"></pre>
 <script type="module">
 const frame=document.getElementById('deck'),base=document.getElementById('baseline'),select=document.getElementById('slide'),report=document.getElementById('report');
 const tick=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
