@@ -35,7 +35,7 @@ export class PresenterLayout {
     this.schedule();
   }
   clear(slide) {
-    for (const name of ['--copy-right', '--copy-top', '--copy-spacing', '--glow-left', '--glow-top', '--glow-width', '--glow-height', '--glow-video-x', '--glow-video-y', '--glow-video-radius']) {
+    for (const name of ['--copy-right', '--copy-top', '--copy-spacing', '--glow-left', '--glow-top', '--glow-width', '--glow-height', '--glow-video-x', '--glow-video-y', '--glow-video-radius', '--glow-title-bottom', '--glow-body-top']) {
       slide.style.removeProperty(name);
     }
     delete slide.dataset.presenterLayout;
@@ -88,7 +88,9 @@ export class PresenterLayout {
   updateGlow() {
     const slide = this.slide;
     if (!slide || slide.hidden) return;
-    const rects = textRects(slide);
+    const copy = slide.querySelector(COPY_SELECTOR);
+    if (!copy) return;
+    const rects = textRects(copy);
     if (!rects.length) return;
     const bounds = slide.getBoundingClientRect();
     const padding = bounds.width * .07;
@@ -100,7 +102,9 @@ export class PresenterLayout {
       '--glow-left': left - bounds.left,
       '--glow-top': top - bounds.top,
       '--glow-width': right - left,
-      '--glow-height': bottom - top
+      '--glow-height': bottom - top,
+      '--glow-title-bottom': (slide.querySelector(':scope > h2')?.getBoundingClientRect().bottom ?? bounds.top) - bounds.top,
+      '--glow-body-top': Math.min(...rects.map(rect => rect.top)) - bounds.top
     };
     // Leave the fixed circular player and its immediate surroundings untouched.
     if (getComputedStyle(this.host).visibility !== 'hidden') {
