@@ -54,8 +54,12 @@ The presentation remains 16:9. The circular player has one consistent size and c
 
 No new runtime dependencies, animations or transitions are added.
 
+Text readability uses one shared `.slide::before` gradient. `PresenterLayout.updateGlow()` reuses actual text measurements after responsive layout, with the same 7% padding and 3cqw feather on every slide. Only this transparent glow layer is softened; photographs, text and presenter videos are not filtered. A circular mask leaves the presenter area clear. Traditional text shadows and the former full-slide Partners overlay have been removed.
+
 
 ## Verification
+
+The text-area glow was compared with the previous deck on all 16 slides at 1024×768, 1366×1024 and 768×1024. Text rectangles and computed typography stayed identical, with no clipping, horizontal overflow or text/video overlap. The same gradient is used throughout, letter shadows are absent, and the presenter area is masked out. Presentation-mode navigation remains hidden.
 
 All 16 slides passed checks for text/player overlap, clipped text, circle bounds, navigation visibility and horizontal overflow in Chromium at 1024×768 and 768×1024, with and without recordings. Recorded-slide presentation checks also passed at 1366×1024 and 1600×900.
 
