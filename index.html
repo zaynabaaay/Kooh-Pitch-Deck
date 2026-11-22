@@ -65,8 +65,11 @@
     .photo-slide{text-shadow:0 1px 4px rgba(0,0,0,.75)}
     .premise-background{--section-heading-size:min(4.7cqw,56px);--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
     .premise-background h2,.premise-background .funding-subtitle{left:var(--copy-inset)}
-    .premise-background .premise-copy,.premise-background .stacked-list,.premise-background .series-content,.premise-background .episode-copy,.premise-background .marketing-sections{left:var(--copy-inset);right:var(--copy-inset)}
+    .premise-background .premise-copy,.premise-background .stacked-list,.premise-background .series-content,.premise-background .episode-copy,.premise-background .marketing-sections,.premise-background .funding-groups{left:var(--copy-inset);right:var(--copy-inset)}
     .premise-background h2::after{background:#fff}
+    .closing{background:#17131a;color:#fff}
+    .closing h2{top:32%;left:0;right:0;text-align:center;font-size:8cqw}
+    .closing h2::after{width:18%;margin:2cqw auto 0;background:currentColor}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
     .deck-nav button:hover,.deck-nav button:focus-visible{background:#fff2;outline:2px solid #ffe264;outline-offset:-2px}
@@ -230,7 +233,7 @@
     </ul>
   </section>
   <section class="slide premise marketing photo-slide premise-background" id="slide-12" aria-labelledby="marketing-title" hidden>
-    <img class="background" src="assets/cast-portrait.jpg?v=58a1aa9" alt="A smiling older Somali man seated indoors beside a sunlit window.">
+    <img class="background" src="assets/cast-interview.jpg?v=5ac61bd" alt="A smiling older Somali man seated in an armchair, speaking in a warmly sunlit room.">
     <h2 id="marketing-title">DISCOVERABILITY &amp; MARKETING</h2>
     <div class="marketing-sections">
       <article class="marketing-section">
@@ -270,7 +273,8 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise funding" id="slide-14" aria-labelledby="funding-title" hidden>
+  <section class="slide premise funding photo-slide premise-background" id="slide-14" aria-labelledby="funding-title" hidden>
+    <img class="background" src="assets/theatre-stage.jpg?v=7dceb49" alt="A theatre stage lit by a warm spotlight.">
     <h2 id="funding-title">REVENUE MODEL</h2>
     <p class="funding-subtitle">FUNDING STRATEGY</p>
     <div class="funding-groups">
@@ -300,7 +304,8 @@
       </section>
     </div>
   </section>
-  <section class="slide premise funding profit" id="slide-15" aria-labelledby="profit-title profit-subtitle" hidden>
+  <section class="slide premise funding profit photo-slide premise-background" id="slide-15" aria-labelledby="profit-title profit-subtitle" hidden>
+    <img class="background" src="assets/ottawa-sunset.jpg?v=07fc759" alt="Ottawa and Parliament Hill overlooking the city at sunset.">
     <h2 id="profit-title">REVENUE MODEL</h2>
     <p class="funding-subtitle" id="profit-subtitle">PROFIT STRATEGY</p>
     <ul class="stacked-list">
@@ -322,9 +327,12 @@
       </li>
     </ul>
   </section>
+  <section class="slide premise closing" id="slide-16" aria-labelledby="thanks-title" hidden>
+    <h2 id="thanks-title">THANK YOU</h2>
+  </section>
   <nav class="deck-nav" aria-label="Slide navigation">
     <button type="button" id="previous" aria-label="Previous slide">Previous</button>
-    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 15</span>
+    <span id="slide-count" aria-live="polite" aria-atomic="true">1 / 16</span>
     <button type="button" id="next" aria-label="Next slide">Next</button>
   </nav>
   <script>
