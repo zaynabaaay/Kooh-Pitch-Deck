@@ -63,7 +63,7 @@
     .episode-copy p + p{margin-top:calc(2cqw * var(--copy-spacing,1))}
     .slide::before{
       content:"";position:absolute;left:var(--glow-left,0px);top:var(--glow-top,0px);
-      width:var(--glow-width,0px);height:var(--glow-height,0px);z-index:-1;pointer-events:none;
+      width:var(--glow-width,0px);height:var(--glow-height,0px);z-index:-1;pointer-events:none;filter:blur(3cqw);
       background:radial-gradient(ellipse,rgba(0,0,0,.7) 0%,rgba(0,0,0,.64) 48%,rgba(0,0,0,.4) 72%,rgba(0,0,0,.16) 88%,transparent 100%);
       -webkit-mask-image:radial-gradient(circle at var(--glow-video-x,-10000px) var(--glow-video-y,-10000px),transparent var(--glow-video-radius,0px),#000 calc(var(--glow-video-radius,0px) + 2cqw));
       mask-image:radial-gradient(circle at var(--glow-video-x,-10000px) var(--glow-video-y,-10000px),transparent var(--glow-video-radius,0px),#000 calc(var(--glow-video-radius,0px) + 2cqw));
