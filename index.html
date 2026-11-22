@@ -10,18 +10,15 @@
   <link rel="stylesheet" href="presenter.css">
   <style>
     @font-face{font-family:Knewave;src:url('assets/Knewave-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    @font-face{font-family:Caveat;src:url('assets/Caveat-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
     *{box-sizing:border-box}
     html,body{margin:0;min-height:100%;background:#17131a}
     body{min-height:100vh;min-height:100dvh;display:grid;place-items:center}
     .slide{position:relative;width:min(100vw,177.7778vh);width:min(100vw,177.7778dvh);aspect-ratio:16/9;overflow:hidden;container-type:inline-size;isolation:isolate;background:#aa7e87;color:#fff6e4}
     .background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--photo-position,50% 50%);z-index:-2}
-    .eyebrow{position:absolute;top:13%;left:9%;margin:0;font:400 1.16cqw/1.4 Arial,sans-serif;letter-spacing:.48em;text-transform:uppercase}
-    h1{position:absolute;left:8%;top:22%;margin:0;color:#ffe264;font:400 18cqw/1.1 Knewave,cursive;letter-spacing:-.045em;text-shadow:0 .08cqw .6cqw rgba(62,37,42,.1)}
-    .underline{position:absolute;left:11%;top:58%;width:36%;height:3%;color:#ffe264;transform:rotate(-3deg)}
-    .tagline{position:absolute;top:25%;right:7.2%;margin:0;text-align:center;font:500 2.7cqw/1.25 Caveat,cursive;transform:rotate(-5deg)}
-    .tagline span{display:block}
-    .tagline::after{content:"";display:block;width:66%;height:.22cqw;background:currentColor;border-radius:100%;margin:.7cqw 0 0 auto;transform:rotate(-4deg)}
+    .cover-title{position:absolute;top:13%;left:8%;right:8%;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .eyebrow{margin:0;font:400 1.16cqw/1.4 Arial,sans-serif;letter-spacing:.48em;text-transform:uppercase}
+    .cover-title h1{margin:1.5cqw 0 1.1cqw;color:#ffe264;font:400 18cqw/1.1 Knewave,cursive;letter-spacing:-.045em;text-shadow:0 .08cqw .6cqw rgba(62,37,42,.1)}
+    .creator-credit{margin:0;color:#fff;font:400 1.9cqw/1.4 Georgia,serif;letter-spacing:.025em;text-shadow:0 1px 3px rgba(0,0,0,.4)}
     [hidden]{display:none!important}
     .premise{background:#fff8ed;color:#352538}
     .premise h2{position:absolute;top:10%;left:8%;margin:0;font:400 var(--heading-size,5.2cqw)/1.2 Knewave,cursive;letter-spacing:-.025em}
@@ -65,7 +62,7 @@
     .episode-copy h3{margin:0 0 calc(2.7cqw * var(--copy-spacing,1));font:700 var(--adventure-heading-size,2.5cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .episode-copy p{margin:0}
     .episode-copy p + p{margin-top:calc(2cqw * var(--copy-spacing,1))}
-    .photo-slide :is(h2,h3,.eyebrow,.tagline,.funding-subtitle){text-shadow:var(--photo-text-shadow,0 1px 4px rgba(0,0,0,.75))}
+    .photo-slide :is(h2,h3,.eyebrow,.funding-subtitle){text-shadow:var(--photo-text-shadow,0 1px 4px rgba(0,0,0,.75))}
     .premise-background :is(p:not(.funding-subtitle),li){text-shadow:var(--photo-text-shadow,0 1px 3px rgba(0,0,0,.8))}
     .premise-background{--section-heading-size:min(4.7cqw,56px);--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
     .premise-background h2,.premise-background .funding-subtitle{left:var(--copy-inset)}
@@ -87,10 +84,11 @@
 <body>
   <section class="slide photo-slide" id="slide-1" aria-label="Kooh pitch deck title slide">
     <img class="background" src="assets/sunset.jpg" alt="Six men standing together on the beach, facing a golden sunset over the ocean.">
-    <p class="eyebrow">A new unscripted series</p>
-    <h1>Kooh</h1>
-    <svg class="underline" viewBox="0 0 460 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 Q190 -2 451 8 Q260 4 18 23Z" fill="currentColor"/></svg>
-    <p class="tagline"><span>Six Somali men.</span><span>New challenges.</span><span>Big laughs.</span><span>Real friendship.</span></p>
+    <div class="cover-title">
+      <p class="eyebrow">A new unscripted series</p>
+      <h1>KOOX</h1>
+      <p class="creator-credit">Created by Zaynab Omer</p>
+    </div>
   </section>
   <section class="slide premise photo-slide premise-background" id="slide-2" aria-labelledby="premise-title" hidden>
     <img class="background" src="assets/cast-cafe.jpg" alt="The six cast members chatting together over tea at an outdoor café table.">
