@@ -15,7 +15,7 @@
     body{min-height:100vh;min-height:100dvh;display:grid;place-items:center}
     .slide{position:relative;width:min(100vw,177.7778vh);width:min(100vw,177.7778dvh);aspect-ratio:16/9;overflow:hidden;container-type:inline-size;isolation:isolate;background:#aa7e87;color:#fff6e4}
     .background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-    .slide::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(37,25,55,.28),rgba(56,30,48,.12) 49%,transparent 73%)}
+    .slide::before{content:"";position:absolute;inset:0;z-index:-1;background:none}
     .eyebrow{position:absolute;top:13%;left:9%;margin:0;font:400 1.16cqw/1.4 Arial,sans-serif;letter-spacing:.48em;text-transform:uppercase}
     h1{position:absolute;left:8%;top:22%;margin:0;color:#ffe264;font:400 18cqw/1.1 Knewave,cursive;letter-spacing:-.045em;text-shadow:0 .08cqw .6cqw rgba(62,37,42,.1)}
     .underline{position:absolute;left:11%;top:58%;width:36%;height:3%;color:#ffe264;transform:rotate(-3deg)}
@@ -25,10 +25,10 @@
     [hidden]{display:none!important}
     .premise{background:#fff8ed;color:#352538}
     .premise::before{display:none}
-    .premise h2{position:absolute;top:10%;left:8%;margin:0;font:400 5.2cqw/1.2 Knewave,cursive;letter-spacing:-.025em}
+    .premise h2{position:absolute;top:10%;left:8%;margin:0;font:400 var(--heading-size,5.2cqw)/1.2 Knewave,cursive;letter-spacing:-.025em}
     .premise h2::after{content:"";display:block;width:35%;height:.5cqw;background:#f3c741;margin-top:1.8cqw;transform:rotate(-2deg);border-radius:50%}
     .premise-copy{position:absolute;left:8%;right:8%;top:33%;display:flex;flex-direction:column;gap:1.7cqw}
-    .premise-copy p{margin:0;font:400 1.85cqw/1.45 Arial,sans-serif;letter-spacing:-.015em}
+    .premise-copy p{margin:0;font:400 var(--body-size,1.85cqw)/1.45 Arial,sans-serif;letter-spacing:-.015em}
     .premise-copy strong{font-weight:700}
     .comparison-grid{position:absolute;top:39%;left:8%;right:8%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4.5cqw}
     .comparison{border-top:.3cqw solid #f3c741;padding-top:2cqw}
@@ -39,10 +39,10 @@
     .marketing-section{border-left:.3cqw solid #f3c741;padding-left:1.8cqw}
     .marketing-section h3{margin:0 0 .65cqw;font:700 1.95cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .marketing-section p{margin:0;font:400 1.85cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
-    .stacked-list{position:absolute;top:31%;left:8%;right:8%;display:flex;flex-direction:column;gap:2.8cqw;list-style:none;margin:0;padding:0}
+    .stacked-list{position:absolute;top:31%;left:8%;right:8%;display:flex;flex-direction:column;gap:var(--list-gap,2.8cqw);list-style:none;margin:0;padding:0}
     .stacked-list li{border-left:.3cqw solid #f3c741;padding-left:1.8cqw}
-    .stacked-list h3{margin:0 0 .65cqw;font:700 1.95cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
-    .stacked-list p{margin:0;font:400 1.85cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
+    .stacked-list h3{margin:0 0 .65cqw;font:700 var(--subheading-size,1.95cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
+    .stacked-list p{margin:0;font:400 var(--body-size,1.85cqw)/1.45 Arial,sans-serif;letter-spacing:-.01em}
     .partners h2{font-size:4.7cqw;right:8%}
     .partners .stacked-list{gap:1.6cqw}
     .partners .stacked-list p + p{margin-top:.6cqw}
@@ -67,8 +67,15 @@
     .episode-copy h3{margin:0 0 2.7cqw;font:700 2.5cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .episode-copy p{margin:0}
     .episode-copy p + p{margin-top:2cqw}
-    .premise-background{color:#fff}
-    .premise-background::before{display:block;background:rgba(0,0,0,.58)}
+    /* A soft scrim follows the copy, leaving the rest of each photograph open. */
+    .photo-slide{--photo-shade:.36;--photo-band-end:56%;--photo-fade-end:82%}
+    .photo-slide::before{background:linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,var(--photo-shade)) 24%,rgba(0,0,0,var(--photo-lower-shade,var(--photo-shade))) var(--photo-band-end),transparent var(--photo-fade-end))}
+    .photo-slide--long-copy{--photo-shade:.32;--photo-lower-shade:.46;--photo-band-end:84%;--photo-fade-end:100%}
+    .photo-slide--cover{--photo-shade:.16;--photo-band-end:40%;--photo-fade-end:73%}
+    .premise-background{--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
+    .premise-background::before{display:block}
+    .premise-background h2{left:var(--copy-inset)}
+    .premise-background .premise-copy,.premise-background .stacked-list{left:var(--copy-inset);right:var(--copy-inset)}
     .premise-background h2::after{background:#fff}
     .premise-background .stacked-list li{border-color:#fff}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
@@ -82,14 +89,14 @@
   </style>
 </head>
 <body>
-  <section class="slide" id="slide-1" aria-label="Kooh pitch deck title slide">
+  <section class="slide photo-slide photo-slide--cover" id="slide-1" aria-label="Kooh pitch deck title slide">
     <img class="background" src="assets/sunset.jpg" alt="Six men standing together on the beach, facing a golden sunset over the ocean.">
     <p class="eyebrow">A new unscripted series</p>
     <h1>Kooh</h1>
     <svg class="underline" viewBox="0 0 460 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 Q190 -2 451 8 Q260 4 18 23Z" fill="currentColor"/></svg>
     <p class="tagline"><span>Six Somali men.</span><span>New challenges.</span><span>Big laughs.</span><span>Real friendship.</span></p>
   </section>
-  <section class="slide premise premise-background" id="slide-2" aria-labelledby="premise-title" hidden>
+  <section class="slide premise photo-slide premise-background" id="slide-2" aria-labelledby="premise-title" hidden>
     <img class="background" src="assets/cast-cafe.jpg" alt="The six cast members chatting together over tea at an outdoor café table.">
     <h2 id="premise-title">THE PREMISE</h2>
     <div class="premise-copy">
@@ -97,7 +104,7 @@
       <p>Each adventure brings out their personalities through playful rivalries, teamwork, and unexpected situations, as friendships develop along the way.</p>
     </div>
   </section>
-  <section class="slide premise tone premise-background" id="slide-3" aria-labelledby="tone-title" hidden>
+  <section class="slide premise tone photo-slide photo-slide--long-copy premise-background" id="slide-3" aria-labelledby="tone-title" hidden>
     <img class="background" src="assets/cast-challenge.jpg" alt="The six cast members laughing together during an outdoor challenge around a table with cones and tennis balls.">
     <h2 id="tone-title">THE TONE</h2>
     <ul class="stacked-list">
