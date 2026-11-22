@@ -34,14 +34,14 @@
     .comparison{border-top:.3cqw solid #f3c741;padding-top:2cqw}
     .comparison h3{margin:0 0 1.8cqw;font:700 2cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .comparison p{margin:0;font:400 1.9cqw/1.55 Arial,sans-serif;letter-spacing:-.01em}
-    .marketing h2{font-size:4.7cqw;right:8%}
+    .marketing h2{font-size:var(--section-heading-size,4.7cqw);right:8%}
     .marketing-sections{position:absolute;top:31%;left:8%;right:8%;display:flex;flex-direction:column;gap:2.2cqw}
-    .marketing-section h3{margin:0 0 .65cqw;font:700 1.95cqw/1.3 Arial,sans-serif;letter-spacing:-.02em}
-    .marketing-section p{margin:0;font:400 1.85cqw/1.45 Arial,sans-serif;letter-spacing:-.01em}
+    .marketing-section h3{margin:0 0 .65cqw;font:700 var(--subheading-size,1.95cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
+    .marketing-section p{margin:0;font:400 var(--body-size,1.85cqw)/1.45 Arial,sans-serif;letter-spacing:-.01em}
     .stacked-list{position:absolute;top:31%;left:8%;right:8%;display:flex;flex-direction:column;gap:var(--list-gap,2.8cqw);list-style:none;margin:0;padding:0}
     .stacked-list h3{margin:0 0 .65cqw;font:700 var(--subheading-size,1.95cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .stacked-list p{margin:0;font:400 var(--body-size,1.85cqw)/1.45 Arial,sans-serif;letter-spacing:-.01em}
-    .partners h2{font-size:4.7cqw;right:8%}
+    .partners h2{font-size:var(--section-heading-size,4.7cqw);right:8%}
     .partners .stacked-list{gap:1.6cqw}
     .partners .stacked-list p + p{margin-top:.6cqw}
     .funding h2{font-size:4.7cqw;top:8%}
@@ -69,11 +69,12 @@
     .photo-slide::before{background:var(--photo-scrim)}
     .photo-slide--long-copy{--photo-focus:60%;--photo-radius:57%;--photo-strength:.62}
     .photo-slide--bright{--photo-focus:53%;--photo-radius:70%;--photo-strength:.64}
+    .photo-slide--high-key{--photo-focus:46%;--photo-radius:80%;--photo-strength:.64}
     .photo-slide--cover{--photo-scrim:linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.16) 40%,transparent 73%)}
-    .premise-background{--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
+    .premise-background{--section-heading-size:min(4.7cqw,56px);--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
     .premise-background::before{display:block}
     .premise-background h2,.premise-background .funding-subtitle{left:var(--copy-inset)}
-    .premise-background .premise-copy,.premise-background .stacked-list,.premise-background .series-content,.premise-background .episode-copy{left:var(--copy-inset);right:var(--copy-inset)}
+    .premise-background .premise-copy,.premise-background .stacked-list,.premise-background .series-content,.premise-background .episode-copy,.premise-background .marketing-sections{left:var(--copy-inset);right:var(--copy-inset)}
     .premise-background h2::after{background:#fff}
     .deck-nav{position:fixed;bottom:12px;right:16px;display:flex;align-items:center;gap:14px;padding:6px 8px;border-radius:24px;background:rgba(23,19,26,.88);color:#fff6e4;font:14px/1.2 Arial,sans-serif;z-index:5}
     .deck-nav button{min-width:44px;min-height:44px;padding:8px 12px;border:0;border-radius:20px;background:transparent;color:inherit;font:inherit;cursor:pointer}
@@ -219,7 +220,8 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise audience" id="slide-11" aria-labelledby="audience-title" hidden>
+  <section class="slide premise audience photo-slide photo-slide--long-copy premise-background" id="slide-11" aria-labelledby="audience-title" hidden>
+    <img class="background" src="assets/bus-stop-cast.jpg?v=8561cbf" alt="Three older Somali men laughing together at a bus shelter in warm afternoon light.">
     <h2 id="audience-title">TARGET AUDIENCE</h2>
     <ul class="stacked-list">
       <li>
@@ -236,7 +238,8 @@
       </li>
     </ul>
   </section>
-  <section class="slide premise marketing" id="slide-12" aria-labelledby="marketing-title" hidden>
+  <section class="slide premise marketing photo-slide photo-slide--long-copy premise-background" id="slide-12" aria-labelledby="marketing-title" hidden>
+    <img class="background" src="assets/cast-portrait.jpg?v=58a1aa9" alt="A smiling older Somali man seated indoors beside a sunlit window.">
     <h2 id="marketing-title">DISCOVERABILITY &amp; MARKETING</h2>
     <div class="marketing-sections">
       <article class="marketing-section">
@@ -253,7 +256,8 @@
       </article>
     </div>
   </section>
-  <section class="slide premise partners" id="slide-13" aria-labelledby="partners-title" hidden>
+  <section class="slide premise partners photo-slide photo-slide--high-key premise-background" id="slide-13" aria-labelledby="partners-title" hidden style="--photo-position:50% 10%">
+    <img class="background" src="assets/beta-squad.jpg?v=e1308c5" alt="The five Beta Squad members laughing together in dark hoodies.">
     <h2 id="partners-title">TARGET CHANNEL &amp; PARTNERS</h2>
     <ul class="stacked-list">
       <li>
