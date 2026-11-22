@@ -54,3 +54,11 @@ The presentation remains 16:9. The circular player has one consistent size and c
 
 No new runtime dependencies, animations or transitions are added.
 
+
+## Verification
+
+All 16 slides passed checks for text/player overlap, clipped text, circle bounds, navigation visibility and horizontal overflow in Chromium at 1024×768 and 768×1024, with and without recordings. Recorded-slide presentation checks also passed at 1366×1024 and 1600×900.
+
+Temporary H.264/AAC recordings verified the 16 distinct file mappings, sound enabled, restart on entry, immediate stop/reset on navigation, one shared player, and the play-button fallback when autoplay with audio was blocked. Keyboard navigation and presentation exit were exercised; touch navigation and swipe-down exit were checked using synthetic touch events.
+
+The clean viewport presentation fallback was tested. Physical iPad Safari, physical swipe gestures, and native browser fullscreen could not be tested in this environment and should receive a device check before the presentation. Temporary test recordings and QA pages are not included in the final site.
