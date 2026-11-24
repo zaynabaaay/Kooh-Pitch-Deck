@@ -60,13 +60,10 @@
     .episode-copy h3{margin:0 0 calc(2.7cqw * var(--copy-spacing,1));font:700 var(--adventure-heading-size,2.5cqw)/1.3 Arial,sans-serif;letter-spacing:-.02em}
     .episode-copy p{margin:0}
     .episode-copy p + p{margin-top:calc(2cqw * var(--copy-spacing,1))}
-    .slide::before{
-      content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;filter:blur(3cqw);
-      background-image:radial-gradient(ellipse,rgba(0,0,0,.7) 0%,rgba(0,0,0,.64) 48%,rgba(0,0,0,.4) 72%,rgba(0,0,0,.16) 88%,transparent 100%);
-      background-position:var(--glow-left,0px) var(--glow-top,0px);background-size:var(--glow-width,0px) var(--glow-height,0px);background-repeat:no-repeat;
-      -webkit-mask-image:linear-gradient(to bottom,transparent var(--glow-title-bottom,100%),#000 var(--glow-body-top,100%)),radial-gradient(circle at calc(var(--glow-video-x,-10000px) + var(--glow-left,0px)) calc(var(--glow-video-y,-10000px) + var(--glow-top,0px)),transparent var(--glow-video-radius,0px),#000 calc(var(--glow-video-radius,0px) + 2cqw));
-      mask-image:linear-gradient(to bottom,transparent var(--glow-title-bottom,100%),#000 var(--glow-body-top,100%)),radial-gradient(circle at calc(var(--glow-video-x,-10000px) + var(--glow-left,0px)) calc(var(--glow-video-y,-10000px) + var(--glow-top,0px)),transparent var(--glow-video-radius,0px),#000 calc(var(--glow-video-radius,0px) + 2cqw));
-      -webkit-mask-composite:source-in;mask-composite:intersect;
+    .content-section{position:relative;width:fit-content;max-width:100%;isolation:isolate}
+    .content-section::before{
+      content:"";position:absolute;top:-.15cqw;bottom:-.15cqw;left:-.45cqw;width:calc(var(--section-width,100%) + .9cqw);z-index:-1;pointer-events:none;
+      background:rgba(0,0,0,.48);border-radius:.3cqw;filter:blur(.2cqw);
     }
     .premise-background{--section-heading-size:min(4.7cqw,56px);--adventure-size:min(2cqw,26px);--adventure-heading-size:min(2.5cqw,32px);--body-size:min(1.85cqw,24px);--subheading-size:min(1.95cqw,25px);--heading-size:min(5.2cqw,68px);--list-gap:min(2.8cqw,38px);--copy-inset:max(8%,calc((100% - 900px)/2));color:#fff}
     .premise-background h2,.premise-background .funding-subtitle{left:var(--copy-inset)}
@@ -98,23 +95,23 @@
     <img class="background" src="assets/cast-cafe.jpg" alt="The six cast members chatting together over tea at an outdoor café table.">
     <h2 id="premise-title">THE PREMISE</h2>
     <div class="premise-copy">
-      <p><strong>KOOX</strong> is an unscripted variety and adventure series bringing together six Somali men aged 55 and older in Ottawa for games, competitions, and new experiences.</p>
-      <p>Each adventure brings out their personalities through playful rivalries, teamwork, and unexpected situations, as friendships develop along the way.</p>
+      <p class="content-section"><strong>KOOX</strong> is an unscripted variety and adventure series bringing together six Somali men aged 55 and older in Ottawa for games, competitions, and new experiences.</p>
+      <p class="content-section">Each adventure brings out their personalities through playful rivalries, teamwork, and unexpected situations, as friendships develop along the way.</p>
     </div>
   </section>
   <section class="slide premise tone photo-slide premise-background" id="slide-3" aria-labelledby="tone-title" hidden>
     <img class="background" src="assets/cast-challenge.jpg" alt="The six cast members laughing together during an outdoor challenge around a table with cones and tennis balls.">
     <h2 id="tone-title">THE TONE</h2>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>Lighthearted &amp; Unpredictable</h3>
         <p>Playful competition, friendly teasing, and spontaneous humour inspired by Running Man, 2 Days &amp; 1 Night, and Taskmaster.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Fast-Paced &amp; Relaxed</h3>
         <p>Energetic challenges balanced with quieter moments where the men’s personalities and conversations come through.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Korean Variety-Show Editing</h3>
         <p>Expressive captions, funny sound effects, reaction shots, replays, and upbeat music that add to the comedy.</p>
       </li>
@@ -124,12 +121,12 @@
     <img class="background" src="assets/production-kit.jpg" alt="Cameras, lenses, microphones, a clapperboard, and production equipment arranged on a sunlit wooden table.">
     <h2 id="series-format-title">SERIES FORMAT</h2>
     <div class="series-content">
-      <div class="series-metadata">
+      <div class="series-metadata content-section">
         <p><strong>Genre:</strong> Unscripted Variety / Comedy / Adventure</p>
         <p><strong>Season:</strong> 6 Episodes</p>
         <p><strong>Runtime:</strong> 40–45 Minutes per Episode</p>
       </div>
-      <section class="format-description" aria-labelledby="format-description-title">
+      <section class="format-description content-section" aria-labelledby="format-description-title">
         <h3 id="format-description-title">Format</h3>
         <p>Each adventure unfolds across two episodes, combining a series of games, competitions, and activities connected by a central theme.</p>
         <p>The challenges create opportunities for spontaneous humour, friendly rivalries, teamwork, and unexpected moments as the cast navigates each experience.</p>
@@ -140,44 +137,50 @@
     <img class="background" src="assets/fashion-show.jpg" alt="A model walking through a lively community fashion show as guests watch.">
     <h2 id="episode-one-title">Adventure 1</h2>
     <div class="episode-copy">
-      <h3 id="episode-one-subtitle">THE THRIFT STORE FASHION CHALLENGE</h3>
-      <p>The six men take on the role of fashion stylists, competing to create the best outfits using clothing they find at a thrift store.</p>
-      <p>Their creations are revealed in a fashion show, where family and friends judge the final looks and determine the winner.</p>
+      <div class="content-section">
+        <h3 id="episode-one-subtitle">THE THRIFT STORE FASHION CHALLENGE</h3>
+        <p>The six men take on the role of fashion stylists, competing to create the best outfits using clothing they find at a thrift store.</p>
+        <p>Their creations are revealed in a fashion show, where family and friends judge the final looks and determine the winner.</p>
+      </div>
     </div>
   </section>
   <section class="slide premise episode-concept photo-slide premise-background" id="slide-6" aria-labelledby="episode-two-title episode-two-subtitle" hidden>
     <img class="background" src="assets/restaurant-cast.jpg?v=0017a48" alt="Three cast members smiling and working together behind a café counter.">
     <h2 id="episode-two-title">Adventure 2</h2>
     <div class="episode-copy">
-      <h3 id="episode-two-subtitle">THE RESTAURANT CHALLENGE</h3>
-      <p>The six men spend several weeks learning how to cook and coming up with their own menu.</p>
-      <p>Once they’re ready, they open a restaurant for one night and invite the public to come and eat.</p>
-      <p>They’ll be responsible for everything from cooking the food to taking orders and serving customers. With a restaurant full of guests, they’ll have to work together to make the night a success.</p>
+      <div class="content-section">
+        <h3 id="episode-two-subtitle">THE RESTAURANT CHALLENGE</h3>
+        <p>The six men spend several weeks learning how to cook and coming up with their own menu.</p>
+        <p>Once they’re ready, they open a restaurant for one night and invite the public to come and eat.</p>
+        <p>They’ll be responsible for everything from cooking the food to taking orders and serving customers. With a restaurant full of guests, they’ll have to work together to make the night a success.</p>
+      </div>
     </div>
   </section>
   <section class="slide premise episode-concept photo-slide premise-background" id="slide-7" aria-labelledby="episode-three-title episode-three-subtitle" hidden>
     <img class="background" src="assets/thrift-store.jpg" alt="Clothing racks and vintage finds inside a warmly lit thrift store.">
     <h2 id="episode-three-title">Adventure 3</h2>
     <div class="episode-copy">
-      <h3 id="episode-three-subtitle">THE COMMERCIAL CHALLENGE</h3>
-      <p>The six men take filmmaking lessons, learning how to plan, shoot, and direct a commercial.</p>
-      <p>They are then paired with a local business and given the challenge of creating their own advertisement.</p>
-      <p>From coming up with ideas to directing the shoot, the men take control of the creative process before presenting their finished commercial.</p>
+      <div class="content-section">
+        <h3 id="episode-three-subtitle">THE COMMERCIAL CHALLENGE</h3>
+        <p>The six men take filmmaking lessons, learning how to plan, shoot, and direct a commercial.</p>
+        <p>They are then paired with a local business and given the challenge of creating their own advertisement.</p>
+        <p>From coming up with ideas to directing the shoot, the men take control of the creative process before presenting their finished commercial.</p>
+      </div>
     </div>
   </section>
   <section class="slide premise market photo-slide premise-background" id="slide-8" aria-labelledby="market-title" hidden>
     <img class="background" src="assets/neighbourhood-court.jpg?v=e2073f7" alt="An outdoor neighbourhood basketball court in warm evening sunlight.">
     <h2 id="market-title">MARKET OVERVIEW</h2>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>Unscripted Entertainment</h3>
         <p>Unscripted series are gaining visibility on streaming platforms. In the first half of 2026, The Traitors generated <strong>7.7 billion viewing minutes</strong> in the U.S.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>YouTube in Canada</h3>
         <p><strong>77%</strong> of Canadians reported using YouTube in the past month, making it Canada’s most widely used platform in the Ipsos study.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Challenge-Based Entertainment</h3>
         <p>Google’s 2026 analysis identifies challenges as one of ten established creator-led YouTube genres, highlighting the format’s ability to build suspense and audience engagement.</p>
       </li>
@@ -187,15 +190,15 @@
     <img class="background" src="assets/two-days-one-night.jpg?v=b268ffa" alt="The 2 Days and 1 Night cast laughing together in front of a mountain landscape.">
     <h2 id="competitive-title">COMPETITIVE ANALYSIS</h2>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>THE AMAZING RACE</h3>
         <p>Location-based challenges, teamwork, competition, and unpredictable outcomes.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>TASKMASTER</h3>
         <p>Creative challenges, improvisational humour, and personality-driven comedy.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>2 DAYS &amp; 1 NIGHT</h3>
         <p>Group adventures, playful rivalries, ensemble chemistry, and developing friendships.</p>
       </li>
@@ -206,15 +209,15 @@
     <h2 id="why-title">COMPETITIVE ANALYSIS</h2>
     <p class="funding-subtitle" id="why-subtitle">WHY KOOX?</p>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>An All-Somali Cast</h3>
         <p>KOOX features six Somali men, bringing their humour, personalities, and cultural perspectives to a variety-show format.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>An Entirely Older Cast (55+)</h3>
         <p>Unlike its competitors, KOOX features a cast entirely aged 55 and older, placing older adults at the centre of the comedy and challenges.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>An Ottawa-Based Series</h3>
         <p>While its competitors are based elsewhere or travel across destinations, KOOX uses Ottawa’s neighbourhoods, businesses, and landmarks as the setting for its adventures.</p>
       </li>
@@ -224,15 +227,15 @@
     <img class="background" src="assets/bus-stop-cast.jpg?v=8561cbf" alt="Three older Somali men laughing together at a bus shelter in warm afternoon light.">
     <h2 id="audience-title">TARGET AUDIENCE</h2>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>Somali &amp; East African Diaspora</h3>
         <p>Viewers interested in seeing Somali culture, humour, and personalities represented in entertainment.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Ottawa &amp; Local Audiences</h3>
         <p>Residents interested in local entertainment featuring recognizable neighbourhoods, businesses, and community spaces.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Unscripted Entertainment Fans</h3>
         <p>Audiences who enjoy comedy, competitions, group adventures, and personality-driven shows such as Taskmaster, The Amazing Race, and 2 Days &amp; 1 Night.</p>
       </li>
@@ -242,15 +245,15 @@
     <img class="background" src="assets/cast-interview.jpg?v=5ac61bd" alt="A smiling older Somali man seated in an armchair, speaking in a warmly sunlit room.">
     <h2 id="marketing-title">DISCOVERABILITY &amp; MARKETING</h2>
     <div class="marketing-sections">
-      <article class="marketing-section">
+      <article class="marketing-section content-section">
         <h3>Pre-Launch Campaign</h3>
         <p>Introduce the six cast members through promotional photos, individual profiles, and short videos. Release a series trailer to build anticipation.</p>
       </article>
-      <article class="marketing-section">
+      <article class="marketing-section content-section">
         <h3>Digital Marketing</h3>
         <p>Share comedic highlights, challenge clips, and behind-the-scenes content across YouTube Shorts, TikTok, and Instagram Reels.</p>
       </article>
-      <article class="marketing-section">
+      <article class="marketing-section content-section">
         <h3>Community &amp; Creator Outreach</h3>
         <p>Promote KOOX through Somali diaspora networks, Ottawa community pages, local media, and collaborations with content creators.</p>
       </article>
@@ -260,19 +263,19 @@
     <img class="background" src="assets/beta-squad.jpg?v=e1308c5" alt="The five Beta Squad members laughing together in dark hoodies.">
     <h2 id="partners-title">TARGET CHANNEL &amp; PARTNERS</h2>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>Target Channel</h3>
         <p>YouTube — Primary platform for full episodes and short-form content.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Creator Collaborations</h3>
         <p>Beta Squad — Audience reach and cross-promotion.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Apparel &amp; Merchandise</h3>
         <p>Valiant Ville — Branded cast jackets and official KOOX merchandise.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Filming Locations</h3>
         <p>Carleton University — Challenges and group activities.</p>
         <p>The Hub Market Café — Restaurant-based challenges.</p>
@@ -284,7 +287,7 @@
     <h2 id="funding-title">REVENUE MODEL</h2>
     <p class="funding-subtitle">FUNDING STRATEGY</p>
     <div class="funding-groups">
-      <section class="funding-group" aria-labelledby="development-title">
+      <section class="funding-group content-section" aria-labelledby="development-title">
         <h3 id="development-title">Development Funding</h3>
         <ul>
           <li>Ontario Creates — Futures Forward: <strong>Up to $20,000</strong></li>
@@ -293,7 +296,7 @@
           <li>Canada Media Fund — Black and Racialized Communities, Development: <strong>Up to $100,000</strong></li>
         </ul>
       </section>
-      <section class="funding-group" aria-labelledby="production-title">
+      <section class="funding-group content-section" aria-labelledby="production-title">
         <h3 id="production-title">Production &amp; Post-Production Funding</h3>
         <ul>
           <li>Ontario Creates — IP Fund, Digital Series Production: <strong>Up to $200,000</strong></li>
@@ -302,7 +305,7 @@
           <li>Brand Sponsorships: Amount to be determined</li>
         </ul>
       </section>
-      <section class="funding-group" aria-labelledby="distribution-title">
+      <section class="funding-group content-section" aria-labelledby="distribution-title">
         <h3 id="distribution-title">Marketing &amp; Distribution Funding</h3>
         <ul>
           <li>Ontario Creates — Screen Marketing &amp; Discoverability: <strong>Up to $25,000</strong></li>
@@ -315,19 +318,19 @@
     <h2 id="profit-title">REVENUE MODEL</h2>
     <p class="funding-subtitle" id="profit-subtitle">PROFIT STRATEGY</p>
     <ul class="stacked-list">
-      <li>
+      <li class="content-section">
         <h3>Brand Sponsorships &amp; Integrations</h3>
         <p>Potential partnerships with brands such as IKEA and Nando’s through sponsored challenges, product placements, and branded experiences.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>YouTube Monetization</h3>
         <p>Advertising revenue from full episodes and Shorts through the YouTube Partner Program.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Merchandise</h3>
         <p>Official KOOX apparel and limited-edition collaborations, including potential merchandise with Valiant Ville.</p>
       </li>
-      <li>
+      <li class="content-section">
         <h3>Licensing &amp; Distribution</h3>
         <p>Potential licensing agreements with platforms such as CBC Gem and Crave.</p>
       </li>
@@ -344,7 +347,7 @@
   </nav>
   <div class="presentation-status" id="presentation-status" role="status" aria-live="polite"></div>
   <script type="module">
-    import { createPresentation } from "./presentation.js?v=body-glow-2";
+    import { createPresentation } from "./presentation.js?v=section-highlights-1";
     createPresentation();
   </script>
 </body>

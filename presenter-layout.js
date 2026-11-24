@@ -35,7 +35,7 @@ export class PresenterLayout {
     this.schedule();
   }
   clear(slide) {
-    for (const name of ['--copy-right', '--copy-top', '--copy-spacing', '--glow-left', '--glow-top', '--glow-width', '--glow-height', '--glow-video-x', '--glow-video-y', '--glow-video-radius', '--glow-title-bottom', '--glow-body-top']) {
+    for (const name of ['--copy-right', '--copy-top', '--copy-spacing']) {
       slide.style.removeProperty(name);
     }
     delete slide.dataset.presenterLayout;
@@ -44,7 +44,7 @@ export class PresenterLayout {
     cancelAnimationFrame(this.frame);
     this.frame = requestAnimationFrame(() => {
       this.update();
-      this.updateGlow();
+      this.updateSectionHighlights();
     });
   }
   update() {
@@ -85,36 +85,19 @@ export class PresenterLayout {
     }
     slide.dataset.presenterLayout = 'reserved';
   }
-  updateGlow() {
-    const slide = this.slide;
-    if (!slide || slide.hidden) return;
-    const copy = slide.querySelector(COPY_SELECTOR);
-    if (!copy) return;
-    const rects = textRects(copy);
-    if (!rects.length) return;
-    const bounds = slide.getBoundingClientRect();
-    const padding = bounds.width * .07;
-    const left = Math.min(...rects.map(rect => rect.left)) - padding;
-    const top = Math.min(...rects.map(rect => rect.top)) - padding;
-    const right = Math.max(...rects.map(rect => rect.right)) + padding;
-    const bottom = Math.max(...rects.map(rect => rect.bottom)) + padding;
-    const geometry = {
-      '--glow-left': left - bounds.left,
-      '--glow-top': top - bounds.top,
-      '--glow-width': right - left,
-      '--glow-height': bottom - top,
-      '--glow-title-bottom': (slide.querySelector(':scope > h2')?.getBoundingClientRect().bottom ?? bounds.top) - bounds.top,
-      '--glow-body-top': Math.min(...rects.map(rect => rect.top)) - bounds.top
-    };
-    // Leave the fixed circular player and its immediate surroundings untouched.
-    if (getComputedStyle(this.host).visibility !== 'hidden') {
-      const bubble = this.host.getBoundingClientRect();
-      geometry['--glow-video-x'] = (bubble.left + bubble.right) / 2 - left;
-      geometry['--glow-video-y'] = (bubble.top + bubble.bottom) / 2 - top;
-      geometry['--glow-video-radius'] = bubble.width / 2 + bounds.width * .01;
-    }
-    for (const [name, value] of Object.entries(geometry)) {
-      slide.style.setProperty(name, value + 'px');
+  updateSectionHighlights() {
+    if (!this.slide || this.slide.hidden) return;
+    for (const section of this.slide.querySelectorAll('.content-section')) {
+      const bounds = section.getBoundingClientRect();
+      const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+      const range = document.createRange();
+      let right = bounds.left;
+      while (walker.nextNode()) {
+        if (!walker.currentNode.textContent.trim()) continue;
+        range.selectNodeContents(walker.currentNode);
+        for (const rect of range.getClientRects()) right = Math.max(right, rect.right);
+      }
+      section.style.setProperty('--section-width', (right - bounds.left) + 'px');
     }
   }
   destroy() {

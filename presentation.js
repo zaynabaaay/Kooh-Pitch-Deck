@@ -1,6 +1,6 @@
 import { PRESENTER_VIDEOS } from './presenter-videos.js';
 import { PresenterController } from './presenter.js';
-import { PresenterLayout } from './presenter-layout.js?v=body-glow-2';
+import { PresenterLayout } from './presenter-layout.js?v=section-highlights-1';
 
 export function createPresentation({ recordings = PRESENTER_VIDEOS } = {}) {
   const slides = [...document.querySelectorAll('.slide')];

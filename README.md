@@ -48,18 +48,18 @@ The presentation remains 16:9. The circular player has one consistent size and c
 
 - `presentation.js`: existing navigation, fullscreen state and touch/keyboard gestures.
 - `presenter.js`: one shared player and sound-preserving playback lifecycle.
-- `presenter-layout.js`: responsive collision handling.
+- `presenter-layout.js`: responsive collision handling and compact section-background widths.
 - `presenter.css`: circle and clean presentation mode.
 - `presenter-videos.js`: all recording paths.
 
 No new runtime dependencies, animations or transitions are added.
 
-Text readability uses one shared `.slide::before` gradient. `PresenterLayout.updateGlow()` reuses actual text measurements after responsive layout, with the same 7% padding and 3cqw feather on every slide. Only this transparent glow layer is softened; photographs, text and presenter videos are not filtered. A circular mask leaves the presenter area clear. Traditional text shadows and the former full-slide Partners overlay have been removed.
+Content sections use one shared `.content-section::before` background with 0.48 black opacity, minimal padding and a small soft edge. Each list entry groups its heading and description; narrative paragraphs and format/funding groups retain their existing structure. The background width follows the longest rendered text line without changing line breaks. Cover and slide titles remain clear. The former slide-wide gradient, masks and glow geometry have been removed.
 
 
 ## Verification
 
-The text-area glow was compared with the previous deck on all 16 slides at 1024×768, 1366×1024 and 768×1024. Text rectangles and computed typography stayed identical, with no clipping, horizontal overflow or text/video overlap. The same gradient is used throughout, letter shadows are absent, and the presenter area is masked out. Presentation-mode navigation remains hidden.
+Section backgrounds were compared against the previous deck across all 16 slides at 1024×768, 1366×1024 and 768×1024. Text positions, wrapping and typography stayed identical. Revenue Model has four separate backgrounds with clear photographic gaps; no text/video overlap, clipping or horizontal scrolling was found. These were automated Chromium viewport checks, not physical iPad Safari tests.
 
 All 16 slides passed checks for text/player overlap, clipped text, circle bounds, navigation visibility and horizontal overflow in Chromium at 1024×768 and 768×1024, with and without recordings. Recorded-slide presentation checks also passed at 1366×1024 and 1600×900.
 
