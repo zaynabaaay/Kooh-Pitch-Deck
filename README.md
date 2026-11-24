@@ -54,7 +54,7 @@ The presentation remains 16:9. The circular player has one consistent size and c
 
 No new runtime dependencies, animations or transitions are added.
 
-Content sections use one shared `.content-section::before` background with 0.48 black opacity, minimal padding and a small soft edge. Each list entry groups its heading and description; narrative paragraphs and format/funding groups retain their existing structure. The background width follows the longest rendered text line without changing line breaks. Cover and slide titles remain clear. The former slide-wide gradient, masks and glow geometry have been removed.
+Content sections use one shared `.content-section::before` background with 0.48 black opacity and minimal padding. Alpha masks fade the existing background inward to full transparency on every edge and corner, replacing the outward blur without changing its dimensions. Each list entry groups its heading and description; narrative paragraphs and format/funding groups retain their existing structure. The background width follows the longest rendered text line without changing line breaks. Cover and slide titles remain clear. The former slide-wide gradient, masks and glow geometry have been removed.
 
 
 ## Verification
