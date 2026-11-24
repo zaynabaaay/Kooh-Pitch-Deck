@@ -64,7 +64,7 @@
     .content-section::before{
       content:"";position:absolute;top:-.15cqw;bottom:-.15cqw;left:-.45cqw;width:calc(var(--section-width,100%) + .9cqw);z-index:-1;pointer-events:none;
       background:rgba(0,0,0,.48);
-      --section-fade:linear-gradient(90deg,transparent,#000 .8cqw,#000 calc(100% - .8cqw),transparent),linear-gradient(0deg,transparent,#000 .8cqw,#000 calc(100% - .8cqw),transparent);
+      --section-fade:linear-gradient(90deg,transparent,#000 min(2cqw,25%),#000 max(75%,calc(100% - 2cqw)),transparent),linear-gradient(0deg,transparent,#000 min(2cqw,25%),#000 max(75%,calc(100% - 2cqw)),transparent);
       -webkit-mask-image:var(--section-fade);mask-image:var(--section-fade);
       -webkit-mask-composite:source-in;mask-composite:intersect;
     }
